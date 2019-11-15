@@ -1,26 +1,66 @@
-<h2>Login</h2>
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<!-- <h2>Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" routerLink="/home">Login</button>
+        <div class="form-group">
+            <a routerLink="/register" class="form-control login-user">Are you new ?</a>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-block btn-social btn-facebook" (click)="onLoginFacebook()">
+                <span class="fa fa-facebook"></span>
+                FACEBOOK
+            </button>
+            <button class="btn btn-block btn-social btn-google" (click)="onLoginGoogle()">
+                <span class="fa fa-google"></span>
+                GOOGLE
+            </button>
         </div>
     </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
+</form> -->
+<section id="login" class="mb-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+                <div class="card_login">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <form [formGroup]="loginForm" (submit)="onLogin()">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <input type="email" id="email" name="email" class="form-control"
+                                            placeholder="Email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="password" name="password" class="form-control"
+                                            placeholder="Password" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-lg btn-primary btn-block"
+                                        routerLink="/home">Login</button>
+                                    <div class="form-group">
+                                        <a routerLink="/register" class="form-control login-user">¿Eres nuevo?</a>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <button class="btn btn-block btn-social btn-facebook" (click)="onLoginFacebook()">
+                                            <span class="fa fa-facebook"></span>
+                                            FACEBOOK
+                                        </button>
+                                        <button class="btn btn-block btn-social btn-google" (click)="onLoginGoogle()">
+                                            <span class="fa fa-google"></span>
+                                            GOOGLE
+                                        </button>
+                                    </div> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Login
-        </button>
-        <a routerLink="/register" class="btn btn-link">Register</a>
-    </div>
-</form>
+</section>
