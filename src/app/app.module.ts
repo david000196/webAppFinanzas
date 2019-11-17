@@ -14,9 +14,12 @@ import { LoginComponent } from './component/login/login.component';
 import { RegistroUsuarioComponent } from './component/registro-usuario/registro-usuario.component';
 import { RegistroIngresoComponent } from './component/ingresos/registro-ingreso/registro-ingreso.component';
 import { RegistroEgresoComponent } from './component/egresos/registro-egreso/registro-egreso.component';
-import { HomeComponent } from './component/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { CategoriaIngresoComponent } from './component/categoria-ingreso/categoria-ingreso.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { EgresosListComponent } from './component/egresos/egresos-list/egresos-list.component';
+import { IngresosListComponent } from './component/ingresos/ingresos-list/ingresos-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     RegistroEgresoComponent,
     HomeComponent,
     CategoriaIngresoComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashboardComponent,
+    EgresosListComponent,
+    IngresosListComponent
   ],
   imports: [
     BrowserModule,

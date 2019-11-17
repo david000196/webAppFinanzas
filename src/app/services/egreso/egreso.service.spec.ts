@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EgresoServiceService } from './egreso-service.service';
+import { EgresoService } from './egreso.service';
 
-describe('EgresoServiceService', () => {
+describe('EgresoService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: EgresoServiceService = TestBed.get(EgresoServiceService);
+    const service: EgresoService = TestBed.get(EgresoService);
     expect(service).toBeTruthy();
   });
 });
