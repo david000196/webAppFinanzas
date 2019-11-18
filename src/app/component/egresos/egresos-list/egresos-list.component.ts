@@ -47,14 +47,16 @@ export class EgresosListComponent implements OnInit {
   }
 
   handleModalEgresoFormClose(response) {
+    console.log(response.egreso);
+    
     //is response an object?
     if (response == Object(response)) {
       if (response.createMode) {
         response.egreso.id = response.id;
-        this.egresos.unshift(response.Egreso);
+        this.egresos.unshift(response.egreso);
       } else {
         let index = this.egresos.findIndex(value => value.id == response.id);
-        this.egresos[index] = response.Egreso;
+        this.egresos[index] = response.egreso;
       }
     }
   }

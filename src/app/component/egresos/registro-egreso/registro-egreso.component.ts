@@ -28,7 +28,7 @@ export class RegistroEgresoComponent implements OnInit {
       fecha: ['', Validators.required],
       descripcion: ['', Validators.required],
       monto: ['', Validators.required],
-      categoriaIngreso: ['', Validators.required],
+      categoriaEgreso: ['', Validators.required],
     });
 
     if (!this.createMode) {

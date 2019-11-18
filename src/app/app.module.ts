@@ -16,13 +16,15 @@ import { RegistroIngresoComponent } from './component/ingresos/registro-ingreso/
 import { RegistroEgresoComponent } from './component/egresos/registro-egreso/registro-egreso.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoriaIngresoComponent } from './component/categoria-ingreso/categoria-ingreso.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { MenuComponent } from './component/menu/menu.component';
 import { EgresosListComponent } from './component/egresos/egresos-list/egresos-list.component';
 import { IngresosListComponent } from './component/ingresos/ingresos-list/ingresos-list.component';
 import { HeaderComponent } from './component/header/header.component';
 import { MainComponent } from './component/main/main.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { BodyComponent } from './component/body/body.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { CategoriaEgresoComponent } from './component/categoria-egreso/categoria-egreso.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,15 @@ import { BodyComponent } from './component/body/body.component';
     RegistroEgresoComponent,
     HomeComponent,
     CategoriaIngresoComponent,
-    DashboardComponent,
+    MenuComponent,
     EgresosListComponent,
     IngresosListComponent,
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    DashboardComponent,
+    CategoriaEgresoComponent
   ],
   imports: [
     BrowserModule,

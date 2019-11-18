@@ -10,6 +10,7 @@ import { IngresoService } from 'src/app/services/ingreso/ingreso.service';
   styleUrls: ['./ingresos-list.component.css']
 })
 export class IngresosListComponent implements OnInit {
+
   constructor(private modalService: NgbModal,
     private ingresoService: IngresoService) { }
 
@@ -38,9 +39,7 @@ export class IngresosListComponent implements OnInit {
   }
 
   clickAddIngreso() {
-    const modal = this.modalService.open(RegistroIngresoComponent);
-    console.log(modal);
-    
+    const modal = this.modalService.open(RegistroIngresoComponent);    
     modal.result.then(
       this.handleModalIngresoFormClose.bind(this),
       this.handleModalIngresoFormClose.bind(this)
@@ -48,11 +47,9 @@ export class IngresosListComponent implements OnInit {
   }
 
   handleModalIngresoFormClose(response) {
-    console.log(response);
     //is response an object?
     if (response == Object(response)) {
       if (response.createMode) {
-        console.log(response.ingreso);
         response.ingreso.id = response.id;
         this.ingresos.unshift(response.ingreso);
       } else {

@@ -1,16 +1,16 @@
-<div class="modal-header">
+<div class="modal-header ">
     <h4 class="modal-monto">{{createMode ? 'Crear Egreso' : 'Editar Egreso'}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <button type="button" class="close bg-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="modal-body">
-    <form [formGroup]="EgresoForm" (ngSubmit)="saveEgreso()">
+    <form [formGroup]="egresoForm" (ngSubmit)="saveEgreso()">
         <div class="form-group">
             <label for="fecha">Fecha*</label>
             <input type="date" id="fecha" placeholder="Fecha" class="form-control" formControlName="fecha" />
             <span style="color:Red;"
-                *ngIf="EgresoForm.controls['fecha'].touched && EgresoForm.controls['fecha'].errors?.required">La fecha
+                *ngIf="egresoForm.controls['fecha'].touched && egresoForm.controls['fecha'].errors?.required">La fecha
                 es requerido.</span>
         </div>
 
@@ -19,7 +19,7 @@
             <textarea id="descripcion" placeholder="descripcion" class="form-control"
                 formControlName="descripcion"></textarea>
             <span style="color:Red;"
-                *ngIf="EgresoForm.controls['descripcion'].touched && EgresoForm.controls['descripcion'].errors?.required">La
+                *ngIf="egresoForm.controls['descripcion'].touched && egresoForm.controls['descripcion'].errors?.required">La
                 descripción
                 es requerido.</span>
         </div>
@@ -27,7 +27,7 @@
             <label for="monto">Monto*</label>
             <input type="text" id="monto" placeholder="monto" class="form-control" formControlName="monto" />
             <span style="color:Red;"
-                *ngIf="EgresoForm.controls['monto'].touched && EgresoForm.controls['monto'].errors?.required">El monto
+                *ngIf="egresoForm.controls['monto'].touched && egresoForm.controls['monto'].errors?.required">El monto
                 es requerido.</span>
         </div>
         <div class="form-group">
@@ -38,7 +38,7 @@
                     <option>...</option>
                 </select>
                 <span style="color:Red;"
-                    *ngIf="EgresoForm.controls['categoriaEgreso'].touched && EgresoForm.controls['categoriaEgreso'].errors?.required">La
+                    *ngIf="egresoForm.controls['categoriaEgreso'].touched && egresoForm.controls['categoriaEgreso'].errors?.required">La
                     categoria
                     es requerida.</span>
             </div>
@@ -46,5 +46,5 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
-    <button class="btn btn-primary" (click)="saveEgreso()" [disabled]="EgresoForm.invalid">Guardar</button>
+    <button class="btn btn-primary" (click)="saveEgreso()" [disabled]="egresoForm.invalid">Guardar</button>
 </div>

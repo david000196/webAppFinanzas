@@ -1,24 +1,29 @@
-<button class="btn btn-primary" (click)="clickAddEgreso()">Add egreso</button>
-
-<table class="table table-striped" *ngIf="egresos && egresos.length > 0">
-    <thead>
-        <tr>
-                <th>Fecha</th>
-                <th>Categoría</th>
-                <th>Descripción</th>
-                <th>Monto</th>
-        </tr>
-    </thead>
-    <tbody>
-            <tr *ngFor="let egreso of egresos, let index = index">
-                    <td>{{egreso.fecha | date}}</td>
-                    <td>{{egreso.categoriaegreso}}</td>
-                    <td>{{egreso.descripcion}}</td>
-                    <td>{{egreso.monto}}</td>
-                    <td>
-                        <button class="btn btn-primary" (click)="handleEditClick(egreso)">Edit</button>
-                        <button class="btn btn-danger" (click)="handleDeleteClick(egreso.id, index)">Delete</button>
-                    </td>
-                </tr>
-    </tbody>
-</table>
+<div class="card mb-3">
+        <div class="card-header bg-primary ">
+            <button class="btn text-white " (click)="clickAddEgreso()">Agregar egreso</button>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped" *ngIf="egresos && egresos.length > 0">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Categoría</th>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let egreso of egresos, let index = index">
+                        <td>{{egreso.fecha | date}}</td>
+                        <td>{{egreso.categoriaegreso}}</td>
+                        <td>{{egreso.descripcion}}</td>
+                        <td>{{egreso.monto}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="handleEditClick(egreso)">Edit</button>
+                            <button class="btn btn-danger" (click)="handleDeleteClick(egreso.id, index)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
