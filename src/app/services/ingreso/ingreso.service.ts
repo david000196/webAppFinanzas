@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ingreso } from '../../models/Ingreso/Ingreso';
+import { Ingreso } from '../../models/ingreso/ingreso';
 import { DocumentReference, AngularFirestore } from '@angular/fire/firestore';
-import { IngresoViewModel } from '../../models/Ingreso/Ingreso-view-model';
+import { IngresoViewModel } from '../../models/ingreso/ingreso-view-model';
 
 @Injectable({
   providedIn: 'root'
