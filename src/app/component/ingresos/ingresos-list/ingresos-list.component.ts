@@ -21,24 +21,26 @@ export class IngresosListComponent implements OnInit {
   loadIngresos() {
     //"subscribe" para hacer peticion hacia servidor de firebase
     this.ingresoService.getIngresos().subscribe(response => {
-      this.ingresos = [];
+      this.ingresos = [];      
       response.docs.forEach(value => {
         const data = value.data();
         const id = value.id;
-        const Ingreso: IngresoViewModel = {
+        const ingreso: IngresoViewModel = {
           id: id,
-          Fecha: data.Fecha,
-          Descripcion: data.Descripcion,
-          Monto: data.Monto,
-          Categoria: data.Categoria
+          fecha: data.fecha,
+          descripcion: data.descripcion,
+          monto: data.monto,
+          categoriaIngreso: data.categoriaIngreso
         };
-        this.ingresos.push(Ingreso);
+        this.ingresos.push(ingreso);
       });
     });
   }
 
   clickAddIngreso() {
     const modal = this.modalService.open(RegistroIngresoComponent);
+    console.log(modal);
+    
     modal.result.then(
       this.handleModalIngresoFormClose.bind(this),
       this.handleModalIngresoFormClose.bind(this)
@@ -46,25 +48,27 @@ export class IngresosListComponent implements OnInit {
   }
 
   handleModalIngresoFormClose(response) {
+    console.log(response);
     //is response an object?
     if (response == Object(response)) {
       if (response.createMode) {
-        response.Ingreso.id = response.id;
-        this.ingresos.unshift(response.Ingreso);
+        console.log(response.ingreso);
+        response.ingreso.id = response.id;
+        this.ingresos.unshift(response.ingreso);
       } else {
         let index = this.ingresos.findIndex(value => value.id == response.id);
-        this.ingresos[index] = response.Ingreso;
+        this.ingresos[index] = response.ingreso;
       }
     }
   }
 
-  checkedDone(index: number) {
-    // const newDoneValue = !this.Ingresos[index].done
-    // this.Ingresos[index].done = newDoneValue;
-    // const obj = { done: newDoneValue };
-    // const id = this.Ingresos[index].id
-    // this.ingresoService.editIngresoPartial(id, obj);
-  }
+  // checkedDone(index: number) {
+  //   const newDoneValue = !this.ingresos[index].done
+  //   this.ingresos[index].done = newDoneValue;
+  //   const obj = { done: newDoneValue };
+  //   const id = this.ingresos[index].id
+  //   this.ingresoService.editIngresoPartial(id, obj);
+  // }
 
   handleEditClick(ingreso: IngresoViewModel) {
     const modal = this.modalService.open(RegistroIngresoComponent);

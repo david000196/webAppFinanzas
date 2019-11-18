@@ -1,6 +1,6 @@
 export interface Ingreso {
-    Fecha:Date;
-    Categoria:string;
-    Descripcion:String;
-    Monto: string;
+    fecha:Date;
+    categoriaIngreso:string;
+    descripcion:String;
+    monto: string;
 }

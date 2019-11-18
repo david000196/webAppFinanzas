@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './component/login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { RegistroUsuarioComponent } from './component/registro-usuario/registro-usuario.component';
 import { RegistroIngresoComponent } from './component/ingresos/registro-ingreso/registro-ingreso.component';
 import { RegistroEgresoComponent } from './component/egresos/registro-egreso/registro-egreso.component';
@@ -20,7 +20,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { EgresosListComponent } from './component/egresos/egresos-list/egresos-list.component';
 import { IngresosListComponent } from './component/ingresos/ingresos-list/ingresos-list.component';
 import { HeaderComponent } from './component/header/header.component';
-import { ContentComponent } from './component/content/content.component';
+import { MainComponent } from './component/main/main.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { BodyComponent } from './component/body/body.component';
 
@@ -37,7 +37,7 @@ import { BodyComponent } from './component/body/body.component';
     EgresosListComponent,
     IngresosListComponent,
     HeaderComponent,
-    ContentComponent,
+    MainComponent,
     FooterComponent,
     BodyComponent
   ],
@@ -50,6 +50,11 @@ import { BodyComponent } from './component/body/body.component';
     AngularFirestoreModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    RegistroIngresoComponent,
+    RegistroEgresoComponent,
+    RegistroUsuarioComponent
+  ]
 })
 export class AppModule { }

@@ -13,57 +13,58 @@ import { DocumentReference } from '@angular/fire/firestore';
 })
 export class RegistroEgresoComponent implements OnInit {
 
-  EgresoForm: FormGroup;
+  egresoForm: FormGroup;
   //DICE SI EL USUARIO ESTA EDITANDO O CREANDO UNA TAREA
   createMode: boolean = true;
   //TAREA QUE EL USUARIO VA A EDITAR
-  Egreso: EgresoViewModel;
+  egreso: EgresoViewModel;
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private EgresoService: EgresoService) { }
+    private egresoService: EgresoService) { }
 
   ngOnInit() {
-    this.EgresoForm = this.formBuilder.group({
+    this.egresoForm = this.formBuilder.group({
       fecha: ['', Validators.required],
-      descipcion: ['', Validators.required],
-      done: false
+      descripcion: ['', Validators.required],
+      monto: ['', Validators.required],
+      categoriaIngreso: ['', Validators.required],
     });
 
     if (!this.createMode) {
-      this.loadEgreso(this.Egreso);
+      this.loadEgreso(this.egreso);
     }
   }
 
-  loadEgreso(Egreso) {
-    this.EgresoForm.patchValue(Egreso);
+  loadEgreso(egreso) {
+    this.egresoForm.patchValue(egreso);
   }
 
   saveEgreso() {
-    if (this.EgresoForm.invalid) {
+    if (this.egresoForm.invalid) {
       return;
     }
 
     if (this.createMode) {
-      let Egreso: Egreso = this.EgresoForm.value;
-      this.EgresoService.saveEgreso(Egreso)
-        .then(response => this.handleSuccessfulSaveEgreso(response, Egreso))
+      let egreso: Egreso = this.egresoForm.value;
+      this.egresoService.saveEgreso(egreso)
+        .then(response => this.handleSuccessfulSaveEgreso(response, egreso))
         .catch(err => console.error(err));
     } else {
-      let Egreso: EgresoViewModel = this.EgresoForm.value;
-      Egreso.id = this.Egreso.id;
-      this.EgresoService.editEgreso(Egreso)
-        .then(() => this.handleSuccessfulEditEgreso(Egreso))
+      let egreso: EgresoViewModel = this.egresoForm.value;
+      egreso.id = this.egreso.id;
+      this.egresoService.editEgreso(egreso)
+        .then(() => this.handleSuccessfulEditEgreso(egreso))
         .catch(err => console.error(err));
     }
 
   }
 
-  handleSuccessfulSaveEgreso(response: DocumentReference, Egreso: Egreso) {
-    this.activeModal.dismiss({ Egreso: Egreso, id: response.id, createMode: true });
+  handleSuccessfulSaveEgreso(response: DocumentReference, egreso: Egreso) {
+    this.activeModal.dismiss({ Egreso: egreso, id: response.id, createMode: true });
   }
 
-  handleSuccessfulEditEgreso(Egreso: EgresoViewModel) {
-    this.activeModal.dismiss({ Egreso: Egreso, id: Egreso.id, createMode: false });
+  handleSuccessfulEditEgreso(egreso: EgresoViewModel) {
+    this.activeModal.dismiss({ egreso: egreso, id: egreso.id, createMode: false });
   }
 }

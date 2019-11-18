@@ -14,7 +14,7 @@ export class IngresoService {
   private ingresoCollectionName = 'ingresos';
  
   getIngresos(): Observable<firebase.firestore.QuerySnapshot> {
-    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.orderBy('lastModifiedDate', 'desc')).get();
+    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.orderBy('fecha', 'desc')).get();
   }
   saveIngreso(ingreso: Ingreso): Promise<DocumentReference> {
     return this.db.collection(this.ingresoCollectionName).add(ingreso);

@@ -26,8 +26,9 @@ export class RegistroIngresoComponent implements OnInit {
   ngOnInit() {
     this.ingresoForm = this.formBuilder.group({
       fecha: ['', Validators.required],
-      descipcion: ['', Validators.required],
-      done: false
+      descripcion: ['', Validators.required],
+      monto: ['', Validators.required],
+      categoriaIngreso: ['', Validators.required],
     });
 
     if (!this.createMode) {

@@ -26,14 +26,14 @@ export class EgresosListComponent implements OnInit {
       response.docs.forEach(value => {
         const data = value.data();
         const id = value.id;
-        const Egreso: EgresoViewModel = {
+        const egreso: EgresoViewModel = {
           id: id,
-          Fecha: data.Fecha,
-          Descripcion: data.Descripcion,
-          Monto: data.Monto,
-          Categoria:data.Categoria
+          fecha: data.fecha,
+          descripcion: data.descripcion,
+          monto: data.monto,
+          categoriaEgreso: data.categoriaEgreso
         };
-        this.egresos.push(Egreso);
+        this.egresos.push(egreso);
       });
     });
   }
@@ -59,13 +59,13 @@ export class EgresosListComponent implements OnInit {
     }
   }
 
-  checkedDone(index: number) {
-    // const newDoneValue = !this.egresos[index].done
-    // this.egresos[index].done = newDoneValue;
-    // const obj = { done: newDoneValue };
-    // const id = this.egresos[index].id
-    // this.egresoService.editEgresoPartial(id, obj);
-  }
+  // checkedDone(index: number) {
+  //   const newDoneValue = !this.egresos[index].done
+  //   this.egresos[index].done = newDoneValue;
+  //   const obj = { done: newDoneValue };
+  //   const id = this.egresos[index].id
+  //   this.egresoService.editEgresoPartial(id, obj);
+  // }
 
   handleEditClick(egreso: EgresoViewModel) {
     const modal = this.modalService.open(RegistroEgresoComponent);
@@ -74,7 +74,7 @@ export class EgresosListComponent implements OnInit {
       this.handleModalEgresoFormClose.bind(this)
     )
     modal.componentInstance.createMode = false;
-    modal.componentInstance.Egreso = egreso;
+    modal.componentInstance.egreso = egreso;
   }
 
   handleDeleteClick(egresoId: string, index: number) {

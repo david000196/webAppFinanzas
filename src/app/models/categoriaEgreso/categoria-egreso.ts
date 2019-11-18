@@ -1,3 +1,3 @@
 export interface ClasificacionEgreso {
-    nombre:String;
+    nombre:string;
 }
