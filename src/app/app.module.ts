@@ -25,6 +25,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { BodyComponent } from './component/body/body.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { CategoriaEgresoComponent } from './component/categoria-egreso/categoria-egreso.component';
+import { RegistroCategoriaComponent } from './component/categoria-ingreso/registro-categoria/registro-categoria.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CategoriaEgresoComponent } from './component/categoria-egreso/categoria
     FooterComponent,
     BodyComponent,
     DashboardComponent,
-    CategoriaEgresoComponent
+    CategoriaEgresoComponent,
+    RegistroCategoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { CategoriaEgresoComponent } from './component/categoria-egreso/categoria
   entryComponents: [
     RegistroIngresoComponent,
     RegistroEgresoComponent,
-    RegistroUsuarioComponent
+    RegistroUsuarioComponent,
+    RegistroCategoriaComponent
   ]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 
 
 <div class="modal-header">
-    <h4 class="modal-monto">{{createMode ? 'Crear Ingreso' : 'Editar Ingreso'}}</h4>
+    <h4 class="modal-nombre">{{createMode ? 'Crear Ingreso' : 'Editar Ingreso'}}</h4>
     <button type="button" class="btn close bg-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -10,10 +10,10 @@
     <form [formGroup]="ingresoForm" (ngSubmit)="saveingreso()">        
         
         <div class="form-group">
-            <label for="monto">Nombre</label>
-            <input type="text" id="monto" placeholder="monto" class="form-control" formControlName="monto" />
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="nombre" class="form-control" formControlName="nombre" />
             <span style="color:Red;"
-                *ngIf="ingresoForm.controls['monto'].touched && ingresoForm.controls['monto'].errors?.required">El monto
+                *ngIf="ingresoForm.controls['nombre'].touched && ingresoForm.controls['nombre'].errors?.required">El nombre
                 es requerido.</span>
         </div>
         
