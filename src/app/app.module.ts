@@ -26,6 +26,7 @@ import { BodyComponent } from './component/body/body.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { CategoriaEgresoComponent } from './component/categoria-egreso/categoria-egreso.component';
 import { RegistroCategoriaComponent } from './component/categoria-ingreso/registro-categoria/registro-categoria.component';
+import { RegistroEgresoCategoriaComponent } from './component/categoria-egreso/registro-egreso-categoria/registro-egreso-categoria.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { RegistroCategoriaComponent } from './component/categoria-ingreso/regist
     BodyComponent,
     DashboardComponent,
     CategoriaEgresoComponent,
-    RegistroCategoriaComponent
+    RegistroCategoriaComponent,
+    RegistroEgresoCategoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,9 @@ import { RegistroCategoriaComponent } from './component/categoria-ingreso/regist
     RegistroIngresoComponent,
     RegistroEgresoComponent,
     RegistroUsuarioComponent,
-    RegistroCategoriaComponent
+    RegistroCategoriaComponent,
+    CategoriaEgresoComponent,
+    RegistroEgresoCategoriaComponent
   ]
 })
 export class AppModule { }
