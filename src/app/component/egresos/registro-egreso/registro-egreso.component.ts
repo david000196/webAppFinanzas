@@ -5,6 +5,8 @@ import { EgresoService } from 'src/app/services/egreso/egreso.service';
 import { EgresoViewModel } from 'src/app/models/egreso/egreso-view-model';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DocumentReference } from '@angular/fire/firestore';
+import { CategoriaEgresoService } from 'src/app/services/categoriaEgreso/categoria-egreso.service';
+import { CategoriaEgresoViewModel } from 'src/app/models/categoriaEgreso/categoria-egreso-view-model';
 
 @Component({
   selector: 'app-registro-egreso',
@@ -18,10 +20,14 @@ export class RegistroEgresoComponent implements OnInit {
   createMode: boolean = true;
   //TAREA QUE EL USUARIO VA A EDITAR
   egreso: EgresoViewModel;
+  //LISTA CATEGORIAS EGRESOS
+  categoriaEgresos: CategoriaEgresoViewModel[] = [];
+
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private egresoService: EgresoService) { }
+    private egresoService: EgresoService,
+    private categoriaEgresoService: CategoriaEgresoService) { }
 
   ngOnInit() {
     this.egresoForm = this.formBuilder.group({
@@ -66,5 +72,21 @@ export class RegistroEgresoComponent implements OnInit {
 
   handleSuccessfulEditEgreso(egreso: EgresoViewModel) {
     this.activeModal.dismiss({ egreso: egreso, id: egreso.id, createMode: false });
+  }
+
+  loadCategoriaEgresos() {
+    //"subscribe" para hacer peticion hacia servidor de firebase
+    this.categoriaEgresoService.getCategoriaEgresos().subscribe(response => {
+      this.categoriaEgresos = [];
+      response.docs.forEach(value => {
+        const data = value.data();
+        const id = value.id;
+        const categoriaEgreso: CategoriaEgresoViewModel = {
+          id: id,
+          nombre: data.nombre
+        };
+        this.categoriaEgresos.push(categoriaEgreso);
+      });
+    });
   }
 }

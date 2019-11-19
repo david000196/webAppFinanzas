@@ -34,8 +34,7 @@
                 <label for="categoriaEgreso">Categoría Egreso*</label>
                 <select type="text" id="categoriaEgreso" placeholder="categoriaEgreso" class="form-control"
                     formControlName="categoriaEgreso">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                    <option *ngFor="categoriaEgreso of categoriasEgreso" [value]="categoriaEgreso.id">{{categoriaEgreso.nombre}}</option>
                 </select>
                 <span style="color:Red;"
                     *ngIf="egresoForm.controls['categoriaEgreso'].touched && egresoForm.controls['categoriaEgreso'].errors?.required">La

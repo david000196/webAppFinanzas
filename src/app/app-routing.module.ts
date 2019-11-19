@@ -7,7 +7,7 @@ import { IngresosListComponent } from './component/ingresos/ingresos-list/ingres
 import { CategoriaIngresoComponent } from './component/categoria-ingreso/categoria-ingreso.component';
 import { EgresosListComponent } from './component/egresos/egresos-list/egresos-list.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { CategoriaEgresoComponent } from './component/categoria-egreso/categoria-egreso.component';
+import { CategoriaEgresoListComponent } from './component/categoria-egreso/categoria-egreso-list/categoria-egreso-list.component';
 
 
 
@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'ingresos', component: IngresosListComponent },
       { path: 'egresos', component: EgresosListComponent },
       { path: 'categoriaIngreso', component: CategoriaIngresoComponent },
-      { path: 'categoriaEgreso', component: CategoriaEgresoComponent },
+      { path: 'categoriaEgreso', component: CategoriaEgresoListComponent },
 
 
     ]

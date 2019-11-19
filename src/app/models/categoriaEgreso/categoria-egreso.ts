@@ -1,3 +1,3 @@
-export interface ClasificacionEgreso {
+export interface CategoriaEgreso {
     nombre:string;
 }
