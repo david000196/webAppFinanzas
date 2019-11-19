@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroUsuarioComponent } from './component/registro-usuario/registro-usuario.component';
 import { HomeComponent } from './pages/home/home.component';
 import { IngresosListComponent } from './component/ingresos/ingresos-list/ingresos-list.component';
-import { CategoriaIngresoComponent } from './component/categoria-ingreso/categoria-ingreso.component';
+import { CategoriaIngresoListComponent } from './component/categoria-ingreso/categoria-ingreso-list/categoria-ingreso-list.component';
 import { EgresosListComponent } from './component/egresos/egresos-list/egresos-list.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { CategoriaEgresoListComponent } from './component/categoria-egreso/categoria-egreso-list/categoria-egreso-list.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'ingresos', component: IngresosListComponent },
       { path: 'egresos', component: EgresosListComponent },
-      { path: 'categoriaIngreso', component: CategoriaIngresoComponent },
+      { path: 'categoriaIngreso', component: CategoriaIngresoListComponent },
       { path: 'categoriaEgreso', component: CategoriaEgresoListComponent },
 
 
