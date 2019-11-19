@@ -36,6 +36,7 @@ export class RegistroEgresoComponent implements OnInit {
       monto: ['', Validators.required],
       categoriaEgreso: ['', Validators.required],
     });
+    this.loadCategoriaEgresos();
 
     if (!this.createMode) {
       this.loadEgreso(this.egreso);
@@ -52,6 +53,8 @@ export class RegistroEgresoComponent implements OnInit {
     }
 
     if (this.createMode) {
+      console.log(this.egresoForm.value);
+      
       let egreso: Egreso = this.egresoForm.value;
       this.egresoService.saveEgreso(egreso)
         .then(response => this.handleSuccessfulSaveEgreso(response, egreso))
@@ -80,6 +83,7 @@ export class RegistroEgresoComponent implements OnInit {
       this.categoriaEgresos = [];
       response.docs.forEach(value => {
         const data = value.data();
+     //   console.log(data);
         const id = value.id;
         const categoriaEgreso: CategoriaEgresoViewModel = {
           id: id,
