@@ -24,9 +24,9 @@ import { MainComponent } from './component/main/main.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { BodyComponent } from './component/body/body.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { CategoriaEgresoComponent } from './component/categoria-egreso/categoria-egreso.component';
 import { RegistroCategoriaComponent } from './component/categoria-ingreso/registro-categoria/registro-categoria.component';
-import { RegistroEgresoCategoriaComponent } from './component/categoria-egreso/registro-egreso-categoria/registro-egreso-categoria.component';
+import { CategoriaEgresoListComponent } from './component/categoria-egreso/categoria-egreso-list/categoria-egreso-list.component';
+import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/registro-categoria-egreso/registro-categoria-egreso.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +45,9 @@ import { RegistroEgresoCategoriaComponent } from './component/categoria-egreso/r
     FooterComponent,
     BodyComponent,
     DashboardComponent,
-    CategoriaEgresoComponent,
+    CategoriaEgresoListComponent,
     RegistroCategoriaComponent,
-    RegistroEgresoCategoriaComponent
+    RegistroCategoriaEgresoComponent
   ],
   imports: [
     BrowserModule,
@@ -64,8 +64,7 @@ import { RegistroEgresoCategoriaComponent } from './component/categoria-egreso/r
     RegistroEgresoComponent,
     RegistroUsuarioComponent,
     RegistroCategoriaComponent,
-    CategoriaEgresoComponent,
-    RegistroEgresoCategoriaComponent
+    RegistroCategoriaEgresoComponent
   ]
 })
 export class AppModule { }

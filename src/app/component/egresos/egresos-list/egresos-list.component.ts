@@ -23,8 +23,11 @@ export class EgresosListComponent implements OnInit {
     //"subscribe" para hacer peticion hacia servidor de firebase
     this.egresoService.getEgresos().subscribe(response => {
       this.egresos = [];
+
+
       response.docs.forEach(value => {
-        const data = value.data();
+        const data = value.data(); 
+        console.log(data);
         const id = value.id;
         const egreso: EgresoViewModel = {
           id: id,
@@ -47,8 +50,7 @@ export class EgresosListComponent implements OnInit {
   }
 
   handleModalEgresoFormClose(response) {
-    console.log(response.egreso);
-    
+
     //is response an object?
     if (response == Object(response)) {
       if (response.createMode) {

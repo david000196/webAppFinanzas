@@ -1,0 +1,25 @@
+<div class="card mb-3">
+    <div class="card-header bg-primary ">
+        <button class="btn text-white " (click)="clickAddCategoriaEgreso()">Agregar egreso</button>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped" *ngIf="categoriaEgresos && categoriaEgresos.length > 0">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let categorriaEgreso of categoriaEgresos, let index = index">
+                    <td>{{categorriaEgreso.nombre }}</td>                  
+                    <td>
+                        <button class="btn btn-primary" (click)="handleEditClick(egreso)">Edit</button>
+                        <button class="btn btn-danger" (click)="handleDeleteClick(egreso.id, index)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
