@@ -1,11 +1,11 @@
-<div class="modal-header">
+<div class="modal-header ">
     <h4 class="modal-monto">{{createMode ? 'Crear Ingreso' : 'Editar Ingreso'}}</h4>
-    <button type="button" class="btn close bg-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <button type="button" class="close bg-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="modal-body">
-    <form [formGroup]="ingresoForm" (ngSubmit)="saveingreso()">
+    <form [formGroup]="ingresoForm" (ngSubmit)="saveIngreso()">
         <div class="form-group">
             <label for="fecha">Fecha*</label>
             <input type="date" id="fecha" placeholder="Fecha" class="form-control" formControlName="fecha" />
@@ -31,17 +31,16 @@
                 es requerido.</span>
         </div>
         <div class="form-group">
-            <label for="categoriaIngreso">Categoría Ingreso*</label>
-            <select type="text" id="categoriaIngreso" placeholder="categoriaIngreso" class="form-control"
-                formControlName="categoriaIngreso">
-                <option selected>Choose...</option>
-                <option>...</option>
-            </select>
-            <span style="color:Red;"
-                *ngIf="ingresoForm.controls['categoriaIngreso'].touched && ingresoForm.controls['categoriaIngreso'].errors?.required">La
-                categoria
-                es requerida.</span>
-        </div>
+                <label for="categoriaIngreso">Categoría Ingreso*</label>
+                <select type="text" id="categoriaIngreso" placeholder="categoriaIngreso" class="form-control"
+                    formControlName="categoriaIngreso">
+                    <option *ngFor="let categoriaIngreso of categoriaIngresos" [value]="categoriaIngreso.nombre">{{categoriaIngreso.nombre}}</option>
+                </select>
+                <span style="color:Red;"
+                    *ngIf="ingresoForm.controls['categoriaIngreso'].touched && ingresoForm.controls['categoriaIngreso'].errors?.required">La
+                    categoria
+                    es requerida.</span>
+            </div>
     </form>
 </div>
 <div class="modal-footer">

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IngresoViewModel } from 'src/app/models/ingreso/ingreso-view-model';
-import { DocumentReference } from '@angular/fire/firestore';
 import { Ingreso } from 'src/app/models/ingreso/ingreso';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { IngresoService } from 'src/app/services/ingreso/ingreso.service';
+import { IngresoViewModel } from 'src/app/models/ingreso/ingreso-view-model';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { DocumentReference } from '@angular/fire/firestore';
+import { CategoriaIngresoService } from 'src/app/services/categoriaIngreso/categoria-ingreso.service';
+import { ClasificacionIngresoViewModel } from 'src/app/models/categoriaIngreso/categoria-ingreso-view-model';
 
 @Component({
   selector: 'app-registro-ingreso',
@@ -18,10 +20,14 @@ export class RegistroIngresoComponent implements OnInit {
   createMode: boolean = true;
   //TAREA QUE EL USUARIO VA A EDITAR
   ingreso: IngresoViewModel;
+  //LISTA CATEGORIAS EGRESOS
+  categoriaIngresos: ClasificacionIngresoViewModel[] = [];
+
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private ingresoService: IngresoService) { }
+    private ingresoService: IngresoService,
+    private categoriaIngresoService: CategoriaIngresoService) { }
 
   ngOnInit() {
     this.ingresoForm = this.formBuilder.group({
@@ -30,6 +36,7 @@ export class RegistroIngresoComponent implements OnInit {
       monto: ['', Validators.required],
       categoriaIngreso: ['', Validators.required],
     });
+    this.loadCategoriaIngresos();
 
     if (!this.createMode) {
       this.loadIngreso(this.ingreso);
@@ -46,6 +53,8 @@ export class RegistroIngresoComponent implements OnInit {
     }
 
     if (this.createMode) {
+      console.log(this.ingresoForm.value);
+      
       let ingreso: Ingreso = this.ingresoForm.value;
       this.ingresoService.saveIngreso(ingreso)
         .then(response => this.handleSuccessfulSaveIngreso(response, ingreso))
@@ -61,10 +70,27 @@ export class RegistroIngresoComponent implements OnInit {
   }
 
   handleSuccessfulSaveIngreso(response: DocumentReference, ingreso: Ingreso) {
-    this.activeModal.dismiss({ ingreso: ingreso, id: response.id, createMode: true });
+    this.activeModal.dismiss({ Ingreso: ingreso, id: response.id, createMode: true });
   }
 
   handleSuccessfulEditIngreso(ingreso: IngresoViewModel) {
     this.activeModal.dismiss({ ingreso: ingreso, id: ingreso.id, createMode: false });
+  }
+
+  loadCategoriaIngresos() {
+    //"subscribe" para hacer peticion hacia servidor de firebase
+    this.categoriaIngresoService.getCategoriaIngresos().subscribe(response => {
+      this.categoriaIngresos = [];
+      response.docs.forEach(value => {
+        const data = value.data();
+     //   console.log(data);
+        const id = value.id;
+        const categoriaIngreso: ClasificacionIngresoViewModel = {
+          id: id,
+          nombre: data.nombre
+        };
+        this.categoriaIngresos.push(categoriaIngreso);
+      });
+    });
   }
 }
