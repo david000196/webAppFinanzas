@@ -1,17 +1,18 @@
 <div class="card mb-3">
     <div class="card-header bg-primary ">
-        <button class="btn text-white " (click)="clickAddIngreso()">Agregar Categoria Ingreso</button>
+        <button class="btn text-white " (click)="clickAddCategoriaIngreso()">Agregar ingreso</button>
     </div>
     <div class="card-body">
-        <table class="table table-striped" *ngIf="ingresos && ingresos.length > 0">
+        <table class="table table-striped" *ngIf="categoriaIngresos && categoriaIngresos.length > 0">
             <thead>
                 <tr>
-                    <th>Categoria</th>                    
+                    <th>Nombre</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let ingreso of ingresos, let index = index">
-                    <td>Categoria</td>                    
+                <tr *ngFor="let categorriaIngreso of categoriaIngresos, let index = index">
+                    <td>{{categorriaIngreso.nombre }}</td>                  
                     <td>
                         <button class="btn btn-primary" (click)="handleEditClick(ingreso)">Edit</button>
                         <button class="btn btn-danger" (click)="handleDeleteClick(ingreso.id, index)">Delete</button>
@@ -21,3 +22,4 @@
         </table>
     </div>
 </div>
+

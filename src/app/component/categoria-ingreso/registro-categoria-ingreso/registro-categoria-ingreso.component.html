@@ -1,0 +1,21 @@
+<div class="modal-header ">
+    <h4 class="modal-monto">{{createMode ? 'Crear CategoriaIngreso' : 'Editar CategoriaIngreso'}}</h4>
+    <button type="button" class="close bg-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="categoriaIngresoForm" (ngSubmit)="saveCategoriaIngreso()">
+        <div class="form-group">
+            <label for="nombre">Nombre*</label>
+            <input type="text" id="nombre" placeholder="nombre" class="form-control" formControlName="nombre" />
+            <span style="color:Red;"
+                *ngIf="categoriaIngresoForm.controls['nombre'].touched && categoriaIngresoForm.controls['nombre'].errors?.required">El nombre
+                es requerido.</span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button class="btn btn-primary" (click)="saveCategoriaIngreso()" [disabled]="categoriaIngresoForm.invalid">Guardar</button>
+</div>

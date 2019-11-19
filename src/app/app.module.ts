@@ -15,7 +15,7 @@ import { RegistroUsuarioComponent } from './component/registro-usuario/registro-
 import { RegistroIngresoComponent } from './component/ingresos/registro-ingreso/registro-ingreso.component';
 import { RegistroEgresoComponent } from './component/egresos/registro-egreso/registro-egreso.component';
 import { HomeComponent } from './pages/home/home.component';
-import { CategoriaIngresoComponent } from './component/categoria-ingreso/categoria-ingreso.component';
+import { CategoriaIngresoListComponent } from './component/categoria-ingreso/categoria-ingreso-list/categoria-ingreso-list.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { EgresosListComponent } from './component/egresos/egresos-list/egresos-list.component';
 import { IngresosListComponent } from './component/ingresos/ingresos-list/ingresos-list.component';
@@ -24,7 +24,7 @@ import { MainComponent } from './component/main/main.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { BodyComponent } from './component/body/body.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { RegistroCategoriaComponent } from './component/categoria-ingreso/registro-categoria/registro-categoria.component';
+import { RegistroCategoriaIngresoComponent } from './component/categoria-ingreso/registro-categoria-ingreso/registro-categoria-ingreso.component';
 import { CategoriaEgresoListComponent } from './component/categoria-egreso/categoria-egreso-list/categoria-egreso-list.component';
 import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/registro-categoria-egreso/registro-categoria-egreso.component';
 
@@ -36,7 +36,7 @@ import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/r
     RegistroIngresoComponent,
     RegistroEgresoComponent,
     HomeComponent,
-    CategoriaIngresoComponent,
+    CategoriaIngresoListComponent,
     MenuComponent,
     EgresosListComponent,
     IngresosListComponent,
@@ -46,7 +46,7 @@ import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/r
     BodyComponent,
     DashboardComponent,
     CategoriaEgresoListComponent,
-    RegistroCategoriaComponent,
+    RegistroCategoriaIngresoComponent,
     RegistroCategoriaEgresoComponent
   ],
   imports: [
@@ -63,8 +63,9 @@ import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/r
     RegistroIngresoComponent,
     RegistroEgresoComponent,
     RegistroUsuarioComponent,
-    RegistroCategoriaComponent,
-    RegistroCategoriaEgresoComponent
+    RegistroCategoriaIngresoComponent,
+    RegistroCategoriaEgresoComponent,
+    CategoriaIngresoListComponent
   ]
 })
 export class AppModule { }
