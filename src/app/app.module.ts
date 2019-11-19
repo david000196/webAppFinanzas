@@ -27,7 +27,9 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { RegistroCategoriaIngresoComponent } from './component/categoria-ingreso/registro-categoria-ingreso/registro-categoria-ingreso.component';
 import { CategoriaEgresoListComponent } from './component/categoria-egreso/categoria-egreso-list/categoria-egreso-list.component';
 import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/registro-categoria-egreso/registro-categoria-egreso.component';
+import { FormsModule } from '@angular/forms';
 
+import { AngularFireAuthModule } from "@angular/fire/auth";
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,8 @@ import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/r
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    FormsModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],
