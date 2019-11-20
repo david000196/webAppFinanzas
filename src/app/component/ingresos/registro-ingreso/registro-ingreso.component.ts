@@ -59,11 +59,13 @@ export class RegistroIngresoComponent implements OnInit {
       console.log(this.ingresoForm.value);
       
       let ingreso: Ingreso = this.ingresoForm.value;
+      ingreso.uid=this.authService.isUserLoggedIn().uid;
       this.ingresoService.saveIngreso(ingreso)
         .then(response => this.handleSuccessfulSaveIngreso(response, ingreso))
         .catch(err => console.error(err));
     } else {
       let ingreso: IngresoViewModel = this.ingresoForm.value;
+      ingreso.uid=this.authService.isUserLoggedIn().uid;
       ingreso.id = this.ingreso.id;
       this.ingresoService.editIngreso(ingreso)
         .then(() => this.handleSuccessfulEditIngreso(ingreso))
