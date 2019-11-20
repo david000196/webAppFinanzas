@@ -28,7 +28,7 @@
         <div class="form-group" *ngIf="!isForgotPassword">
 
           <span *ngIf="selectedVal == 'login'; else elseBlock">
-            <button type="button" class="btn btn-primary" (click)="loginUser()" routerLink="/home">Log
+            <button type="button" class="btn btn-primary" (click)="loginUser()" >Log
               In</button>
           </span>
           <ng-template #elseBlock>
