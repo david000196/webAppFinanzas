@@ -5,4 +5,5 @@ export interface IngresoViewModel {
     descripcion:String;
     monto: string;
     periodo:string;
+    uid:string;
 }

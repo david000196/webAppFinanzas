@@ -5,4 +5,5 @@ export interface EgresoViewModel {
     descripcion:String;
     monto: string;
     periodo:string;
+    uid:string;
 }

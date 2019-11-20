@@ -4,4 +4,5 @@ export interface Ingreso {
     descripcion:String;
     monto: string;
     periodo:string;
+    uid:string;
 }

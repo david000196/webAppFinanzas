@@ -4,5 +4,5 @@ export interface Egreso {
     descripcion:String;
     monto: string;
     periodo:string;
-
+    uid:string;
 }

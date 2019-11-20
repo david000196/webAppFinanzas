@@ -25,12 +25,16 @@ export class CategoriaEgresoListComponent implements OnInit {
       this.categoriaEgresos = [];
       response.docs.forEach(value => {
         const data = value.data();
-        const id = value.id;
-        const categoriaEgreso: CategoriaEgresoViewModel = {
+        if(data.uid==JSON.parse(localStorage.getItem('user')).uid)
+        {
+          const id = value.id;
+          const categoriaEgreso: CategoriaEgresoViewModel = {
           id: id,
-          nombre: data.nombre
+          nombre: data.nombre,
+          uid: data.uid
         };
         this.categoriaEgresos.push(categoriaEgreso);
+        }        
       });
     });
   }

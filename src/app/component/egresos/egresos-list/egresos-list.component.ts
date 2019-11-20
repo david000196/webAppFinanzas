@@ -26,15 +26,19 @@ export class EgresosListComponent implements OnInit {
       response.docs.forEach(value => {
         const data = value.data();
         const id = value.id;
-        const egreso: EgresoViewModel = {
-          id: id,
-          fecha: data.fecha,
-          descripcion: data.descripcion,
-          monto: data.monto,
-          categoriaEgreso: data.categoriaEgreso,
-          periodo: data.periodo
-        };
-        this.egresos.push(egreso);
+        if(data.uid==JSON.parse(localStorage.getItem('user')).uid)
+        {
+          const egreso: EgresoViewModel = {
+            id: id,
+            fecha: data.fecha,
+            descripcion: data.descripcion,
+            monto: data.monto,
+            categoriaEgreso: data.categoriaEgreso,
+            periodo: data.periodo,
+            uid:data.uid
+          };
+          this.egresos.push(egreso);
+        }        
       });
     });
   }
