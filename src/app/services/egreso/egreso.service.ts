@@ -27,4 +27,9 @@ export class EgresoService {
   deleteEgreso(idEgreso: string): Promise<void> {
     return this.db.collection(this.egresoCollectionName).doc(idEgreso).delete();
   }
+  getEgresosX(): Observable<firebase.firestore.QuerySnapshot> {
+    return this.db.collection<Egreso>(this.egresoCollectionName, ref => ref
+      .where('uid','==',JSON.parse(localStorage.getItem('user')).uid)      
+      ).get();
+  }
 }
