@@ -26,11 +26,15 @@ export class CategoriaIngresoListComponent implements OnInit {
       response.docs.forEach(value => {
         const data = value.data();
         const id = value.id;
-        const categoriaIngreso: ClasificacionIngresoViewModel = {
-          id: id,
-          nombre: data.nombre
-        };
-        this.categoriaIngresos.push(categoriaIngreso);
+        if(data.uid==JSON.parse(localStorage.getItem('user')).uid)
+        {
+          const categoriaIngreso: ClasificacionIngresoViewModel = {
+            id: id,
+            nombre: data.nombre,
+            uid:data.uid
+          };
+          this.categoriaIngresos.push(categoriaIngreso);
+        }        
       });
     });
   }

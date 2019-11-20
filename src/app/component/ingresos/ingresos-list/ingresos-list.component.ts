@@ -25,16 +25,21 @@ export class IngresosListComponent implements OnInit {
       this.ingresos = [];      
       response.docs.forEach(value => {
         const data = value.data();
-        const id = value.id;
-        const ingreso: IngresoViewModel = {
-          id: id,
-          fecha: data.fecha,
-          descripcion: data.descripcion,
-          monto: data.monto,
-          categoriaIngreso: data.categoriaIngreso,
-          periodo: data.periodo
-        };
-        this.ingresos.push(ingreso);
+        
+        if(data.uid==JSON.parse(localStorage.getItem('user')).uid)
+        {
+          const id = value.id;
+          const ingreso: IngresoViewModel = {
+            id: id,
+            fecha: data.fecha,
+            descripcion: data.descripcion,
+            monto: data.monto,
+            categoriaIngreso: data.categoriaIngreso,
+            periodo: data.periodo,
+            uid: data.uid
+          };
+          this.ingresos.push(ingreso);
+        }        
       });
     });
   }
