@@ -12,28 +12,30 @@ export class DashboardComponent implements OnInit {
 
   ingresos:Ingreso[]=[]
   constructor(private ingresoService: IngresoService) { 
-    this.ingresoService.getIngresosAnio().subscribe(response => {
-      this.ingresos = [];      
-      response.docs.forEach(value => {
-        const data = value.data();
-        if(data.uid==JSON.parse(localStorage.getItem('user')).uid)
-        {
-          const id = value.id;
-          const ingreso: IngresoViewModel = {
-          id: id,
-          fecha: data.fecha,
-          descripcion: data.descripcion,
-          monto: data.monto,
-          categoriaIngreso: data.categoriaIngreso,
-          periodo: data.periodo,
-          uid: data.uid
-        };
-        this.ingresos.push(ingreso);
-        }        
+
+    console.log(localStorage.getItem("userId"));
+      //"subscribe" para hacer peticion hacia servidor de firebase
+      this.ingresoService.getIngresosAnio().subscribe(response => {
+        this.ingresos = [];      
+        response.docs.forEach(value => {
+          const data = value.data();
+          console.log(data);
+          if(data.uid==JSON.parse(localStorage.getItem('user')).uid)
+          {
+            const id = value.id;
+            const ingreso: IngresoViewModel = {
+              id: id,
+              fecha: data.fecha,
+              descripcion: data.descripcion,
+              monto: data.monto,
+              categoriaIngreso: data.categoriaIngreso,
+              periodo: data.periodo,
+              uid: data.uid
+            };
+            this.ingresos.push(ingreso);
+          }        
+        });
       });
-    });
-    console.log(this.ingresos);
-    
   }
 
   ngOnInit() {

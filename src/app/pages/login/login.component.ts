@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../service/authentication.service';
- 
+import {  Router } from '@angular/router';
+
 @Component({
   selector: 'login-root',
   templateUrl: './login.component.html',
@@ -8,7 +9,7 @@ import { AuthenticationService } from '../../service/authentication.service';
 })
 export class LoginComponent {
   title = 'firebaseLogin';
- 
+
   selectedVal: string;
   responseMessage: string = '';
   responseMessageType: string = '';
@@ -16,16 +17,17 @@ export class LoginComponent {
   passwordInput: string;
   isForgotPassword: boolean;
   userDetails: any;
- 
- 
+
+
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router:Router
   ) {
     this.selectedVal = 'login';
     this.isForgotPassword = false;
- 
+
   }
- 
+
   // Comman Method to Show Message and Hide after 2 seconds
   showMessage(type, msg) {
     this.responseMessageType = type;
@@ -34,18 +36,22 @@ export class LoginComponent {
       this.responseMessage = "";
     }, 2000);
   }
- 
+
   // Called on switching Login/ Register tabs
   public onValChange(val: string) {
     this.showMessage("", "");
     this.selectedVal = val;
   }
- 
+
   // Check localStorage is having User Data
   isUserLoggedIn() {
     this.userDetails = this.authService.isUserLoggedIn();
+    if (this.userDetails != null) {
+      localStorage.setItem("userId", this.userDetails.uid);
+      this.router.navigate(['home']);
+    }
   }
- 
+
   // SignOut Firebase Session and Clean LocalStorage
   logoutUser() {
     this.authService.logout()
@@ -57,7 +63,7 @@ export class LoginComponent {
         this.showMessage("danger", err.message);
       });
   }
- 
+
   // Login user with  provided Email/ Password
   loginUser() {
     this.responseMessage = "";
@@ -70,12 +76,12 @@ export class LoginComponent {
         this.showMessage("danger", err.message);
       });
   }
- 
+
   // Register user with  provided Email/ Password
   registerUser() {
     this.authService.register(this.emailInput, this.passwordInput)
       .then(res => {
- 
+
         // Send Varification link in email
         this.authService.sendEmailVerification().then(res => {
           console.log(res);
@@ -85,13 +91,13 @@ export class LoginComponent {
           this.showMessage("danger", err.message);
         });
         this.isUserLoggedIn();
- 
- 
+
+
       }, err => {
         this.showMessage("danger", err.message);
       });
   }
- 
+
   // Send link on given email to reset password
   forgotPassword() {
     this.authService.sendPasswordResetEmail(this.emailInput)
@@ -103,7 +109,7 @@ export class LoginComponent {
         this.showMessage("danger", err.message);
       });
   }
- 
+
   // Open Popup to Login with Google Account
   googleLogin() {
     this.authService.loginWithGoogle()
@@ -115,5 +121,5 @@ export class LoginComponent {
         this.showMessage("danger", err.message);
       });
   }
- 
+
 }

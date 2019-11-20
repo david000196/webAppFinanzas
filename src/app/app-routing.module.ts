@@ -23,12 +23,13 @@ const routes: Routes = [
       { path: 'egresos', component: EgresosListComponent },
       { path: 'categoriaIngreso', component: CategoriaIngresoListComponent },
       { path: 'categoriaEgreso', component: CategoriaEgresoListComponent },
-
+      { path: 'home', redirectTo: 'home/dashboard', pathMatch: 'full'
+      },
 
     ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  {path: '**', component: NotFound404Component }
+  { path: '**', component: NotFound404Component }
 
 
 ];

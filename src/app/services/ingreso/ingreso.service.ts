@@ -16,6 +16,7 @@ export class IngresoService {
   getIngresos(): Observable<firebase.firestore.QuerySnapshot> {
     return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.orderBy('fecha', 'desc')).get();
   }
+  
   saveIngreso(ingreso: Ingreso): Promise<DocumentReference> {
     return this.db.collection(this.ingresoCollectionName).add(ingreso);
   }
@@ -30,6 +31,6 @@ export class IngresoService {
   }
 
   getIngresosAnio(): Observable<firebase.firestore.QuerySnapshot> {
-    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.where("descripcion", "==", "aaa")).get();
+    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.orderBy('fecha', 'desc')).get();
   }
 }
