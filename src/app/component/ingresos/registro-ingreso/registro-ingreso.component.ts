@@ -7,6 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DocumentReference } from '@angular/fire/firestore';
 import { CategoriaIngresoService } from 'src/app/services/categoriaIngreso/categoria-ingreso.service';
 import { ClasificacionIngresoViewModel } from 'src/app/models/categoriaIngreso/categoria-ingreso-view-model';
+import { AuthenticationService } from '../../../service/authentication.service';
 
 @Component({
   selector: 'app-registro-ingreso',
@@ -27,7 +28,8 @@ export class RegistroIngresoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private ingresoService: IngresoService,
-    private categoriaIngresoService: CategoriaIngresoService) { }
+    private categoriaIngresoService: CategoriaIngresoService,
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.ingresoForm = this.formBuilder.group({

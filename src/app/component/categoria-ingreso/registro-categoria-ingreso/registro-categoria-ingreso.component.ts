@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClasificacionIngresoViewModel } from 'src/app/models/categoriaIngreso/categoria-ingreso-view-model';
 import { ClasificacionIngreso } from 'src/app/models/categoriaIngreso/categoria-ingreso';
 import { CategoriaIngresoService } from 'src/app/services/categoriaIngreso/categoria-ingreso.service';
+import { AuthenticationService } from '../../../service/authentication.service';
 
 @Component({
   selector: 'app-registro-categoria-ingreso',
@@ -21,7 +22,8 @@ export class RegistroCategoriaIngresoComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private categoriaIngresoService: CategoriaIngresoService) { }
+    private categoriaIngresoService: CategoriaIngresoService,
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.categoriaIngresoForm = this.formBuilder.group({
@@ -44,11 +46,13 @@ export class RegistroCategoriaIngresoComponent implements OnInit {
 
     if (this.createMode) {
       let categoriaIngreso: ClasificacionIngreso = this.categoriaIngresoForm.value;
+      categoriaIngreso.uid=this.authService.isUserLoggedIn().uid;
       this.categoriaIngresoService.saveCategoriaIngreso(categoriaIngreso)
         .then(response => this.handleSuccessfulSaveCategoriaIngreso(response, this.categoriaIngreso))
         .catch(err => console.error(err));
     } else {
       let categoriaIngreso: ClasificacionIngresoViewModel = this.categoriaIngresoForm.value;
+      categoriaIngreso.uid=this.authService.isUserLoggedIn().uid;
       categoriaIngreso.id = this.categoriaIngreso.id;
       this.categoriaIngresoService.editCategoriaIngreso(categoriaIngreso)
         .then(() => this.handleSuccessfulEditCategoriaIngreso(categoriaIngreso))

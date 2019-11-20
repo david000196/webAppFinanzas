@@ -7,6 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DocumentReference } from '@angular/fire/firestore';
 import { CategoriaEgresoService } from 'src/app/services/categoriaEgreso/categoria-egreso.service';
 import { CategoriaEgresoViewModel } from 'src/app/models/categoriaEgreso/categoria-egreso-view-model';
+import { AuthenticationService } from '../../../service/authentication.service';
 
 @Component({
   selector: 'app-registro-egreso',
@@ -27,7 +28,8 @@ export class RegistroEgresoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private egresoService: EgresoService,
-    private categoriaEgresoService: CategoriaEgresoService) { }
+    private categoriaEgresoService: CategoriaEgresoService,
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.egresoForm = this.formBuilder.group({
@@ -57,11 +59,13 @@ export class RegistroEgresoComponent implements OnInit {
       console.log(this.egresoForm.value);
       
       let egreso: Egreso = this.egresoForm.value;
+      egreso.uid=this.authService.isUserLoggedIn().uid;
       this.egresoService.saveEgreso(egreso)
         .then(response => this.handleSuccessfulSaveEgreso(response, egreso))
         .catch(err => console.error(err));
     } else {
       let egreso: EgresoViewModel = this.egresoForm.value;
+      egreso.uid=this.authService.isUserLoggedIn().uid;
       egreso.id = this.egreso.id;
       this.egresoService.editEgreso(egreso)
         .then(() => this.handleSuccessfulEditEgreso(egreso))
