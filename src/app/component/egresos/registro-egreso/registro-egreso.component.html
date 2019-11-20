@@ -31,16 +31,24 @@
                 es requerido.</span>
         </div>
         <div class="form-group">
-                <label for="categoriaEgreso">Categoría Egreso*</label>
-                <select type="text" id="categoriaEgreso" placeholder="categoriaEgreso" class="form-control"
-                    formControlName="categoriaEgreso">
-                    <option *ngFor="let categoriaEgreso of categoriaEgresos" [value]="categoriaEgreso.nombre">{{categoriaEgreso.nombre}}</option>
-                </select>
-                <span style="color:Red;"
-                    *ngIf="egresoForm.controls['categoriaEgreso'].touched && egresoForm.controls['categoriaEgreso'].errors?.required">La
-                    categoria
-                    es requerida.</span>
-            </div>
+            <label for="categoriaEgreso">Categoría Egreso*</label>
+            <select type="text" id="categoriaEgreso" placeholder="categoriaEgreso" class="form-control"
+                formControlName="categoriaEgreso">
+                <option *ngFor="let categoriaEgreso of categoriaEgresos" [value]="categoriaEgreso.nombre">
+                    {{categoriaEgreso.nombre}}</option>
+            </select>
+            <span style="color:Red;"
+                *ngIf="egresoForm.controls['categoriaEgreso'].touched && egresoForm.controls['categoriaEgreso'].errors?.required">La
+                categoria
+                es requerida.</span>
+        </div>
+        <div class="form-group">
+            <label for="periodo">Periodo*</label>
+            <select type="text" id="periodo" placeholder="Periodo" class="form-control" formControlName="periodo">
+                <option selected [value]="0">Quincena I</option>
+                <option [value]="1">Quincena II</option>
+            </select>
+        </div>
     </form>
 </div>
 <div class="modal-footer">

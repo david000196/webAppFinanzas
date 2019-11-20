@@ -3,4 +3,5 @@ export interface Ingreso {
     categoriaIngreso:string;
     descripcion:String;
     monto: string;
+    periodo:string;
 }

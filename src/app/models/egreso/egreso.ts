@@ -3,4 +3,6 @@ export interface Egreso {
     categoriaEgreso:string;
     descripcion:String;
     monto: string;
+    periodo:string;
+
 }

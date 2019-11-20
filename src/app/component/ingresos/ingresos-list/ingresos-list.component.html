@@ -10,6 +10,7 @@
                     <th>Categoría</th>
                     <th>Descripción</th>
                     <th>Monto</th>
+                    <th>Período</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -19,6 +20,8 @@
                     <td>{{ingreso.categoriaIngreso}}</td>
                     <td>{{ingreso.descripcion}}</td>
                     <td>{{ingreso.monto}}</td>
+                    <td *ngIf="ingreso.periodo==='0'">Quincena I</td>
+                    <td *ngIf="ingreso.periodo==='1'">Quincena II</td>
                     <td>
                         <button class="btn btn-primary" (click)="handleEditClick(ingreso)">Edit</button>
                         <button class="btn btn-danger" (click)="handleDeleteClick(ingreso.id, index)">Delete</button>

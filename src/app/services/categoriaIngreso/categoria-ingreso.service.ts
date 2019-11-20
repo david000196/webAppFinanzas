@@ -20,7 +20,6 @@ export class CategoriaIngresoService {
   }
   editCategoriaIngreso(categoriaIngreso: ClasificacionIngresoViewModel): Promise<void> {
     return this.db.collection(this.CategoriaIngresoCollectionName).doc(categoriaIngreso.id).update(categoriaIngreso);
-
   }
   editCategoriaIngresoPartial(id: string, obj: Object): Promise<void> {
     return this.db.collection(this.CategoriaIngresoCollectionName).doc(id).update(obj);

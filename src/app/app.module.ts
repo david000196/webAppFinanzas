@@ -30,6 +30,7 @@ import { RegistroCategoriaEgresoComponent } from './component/categoria-egreso/r
 import { FormsModule } from '@angular/forms';
 
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { NotFound404Component } from './pages/not-found404/not-found404.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
     DashboardComponent,
     CategoriaEgresoListComponent,
     RegistroCategoriaIngresoComponent,
-    RegistroCategoriaEgresoComponent
+    RegistroCategoriaEgresoComponent,
+    NotFound404Component
   ],
   imports: [
     BrowserModule,

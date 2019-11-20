@@ -35,6 +35,7 @@ export class RegistroIngresoComponent implements OnInit {
       descripcion: ['', Validators.required],
       monto: ['', Validators.required],
       categoriaIngreso: ['', Validators.required],
+      periodo: ['', Validators.required],
     });
     this.loadCategoriaIngresos();
 

@@ -31,16 +31,24 @@
                 es requerido.</span>
         </div>
         <div class="form-group">
-                <label for="categoriaIngreso">Categoría Ingreso*</label>
-                <select type="text" id="categoriaIngreso" placeholder="categoriaIngreso" class="form-control"
-                    formControlName="categoriaIngreso">
-                    <option *ngFor="let categoriaIngreso of categoriaIngresos" [value]="categoriaIngreso.nombre">{{categoriaIngreso.nombre}}</option>
-                </select>
-                <span style="color:Red;"
-                    *ngIf="ingresoForm.controls['categoriaIngreso'].touched && ingresoForm.controls['categoriaIngreso'].errors?.required">La
-                    categoria
-                    es requerida.</span>
-            </div>
+            <label for="categoriaIngreso">Categoría Ingreso*</label>
+            <select type="text" id="categoriaIngreso" placeholder="categoriaIngreso" class="form-control"
+                formControlName="categoriaIngreso">
+                <option *ngFor="let categoriaIngreso of categoriaIngresos" [value]="categoriaIngreso.nombre">
+                    {{categoriaIngreso.nombre}}</option>
+            </select>
+            <span style="color:Red;"
+                *ngIf="ingresoForm.controls['categoriaIngreso'].touched && ingresoForm.controls['categoriaIngreso'].errors?.required">La
+                categoria
+                es requerida.</span>
+        </div>
+        <div class="form-group">
+            <label for="periodo">Periodo*</label>
+            <select type="text" id="periodo" placeholder="Periodo" class="form-control" formControlName="periodo">
+                <option selected [value]="0">Quincena I</option>
+                <option [value]="1">Quincena II</option>
+            </select>
+        </div>
     </form>
 </div>
 <div class="modal-footer">
