@@ -8,6 +8,7 @@ import { CategoriaIngresoListComponent } from './component/categoria-ingreso/cat
 import { EgresosListComponent } from './component/egresos/egresos-list/egresos-list.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { CategoriaEgresoListComponent } from './component/categoria-egreso/categoria-egreso-list/categoria-egreso-list.component';
+import { NotFound404Component } from './pages/not-found404/not-found404.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
     ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path: '**', component: NotFound404Component }
 
 
 ];

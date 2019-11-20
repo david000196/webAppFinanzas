@@ -31,7 +31,8 @@ export class IngresosListComponent implements OnInit {
           fecha: data.fecha,
           descripcion: data.descripcion,
           monto: data.monto,
-          categoriaIngreso: data.categoriaIngreso
+          categoriaIngreso: data.categoriaIngreso,
+          periodo: data.periodo
         };
         this.ingresos.push(ingreso);
       });

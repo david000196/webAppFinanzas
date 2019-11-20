@@ -28,4 +28,8 @@ export class IngresoService {
   deleteIngreso(idIngreso: string): Promise<void>{
     return this.db.collection(this.ingresoCollectionName).doc(idIngreso).delete();
   }
+
+  getIngresosAnio(): Observable<firebase.firestore.QuerySnapshot> {
+    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.where("descripcion", "==", "aaa")).get();
+  }
 }

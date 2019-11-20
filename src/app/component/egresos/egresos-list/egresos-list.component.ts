@@ -24,14 +24,15 @@ export class EgresosListComponent implements OnInit {
     this.egresoService.getEgresos().subscribe(response => {
       this.egresos = [];
       response.docs.forEach(value => {
-        const data = value.data(); 
+        const data = value.data();
         const id = value.id;
         const egreso: EgresoViewModel = {
           id: id,
           fecha: data.fecha,
           descripcion: data.descripcion,
           monto: data.monto,
-          categoriaEgreso: data.categoriaEgreso
+          categoriaEgreso: data.categoriaEgreso,
+          periodo: data.periodo
         };
         this.egresos.push(egreso);
       });
@@ -69,7 +70,7 @@ export class EgresosListComponent implements OnInit {
 
   handleEditClick(egreso: EgresoViewModel) {
     const modal = this.modalService.open(RegistroEgresoComponent);
-    modal.result.then(      
+    modal.result.then(
       this.handleModalEgresoFormClose.bind(this),
       this.handleModalEgresoFormClose.bind(this)
     )

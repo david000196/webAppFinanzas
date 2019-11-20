@@ -10,6 +10,7 @@
                         <th>Categoría</th>
                         <th>Descripción</th>
                         <th>Monto</th>
+                        <th>Período</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -19,6 +20,9 @@
                         <td>{{egreso.categoriaEgreso}}</td>
                         <td>{{egreso.descripcion}}</td>
                         <td>{{egreso.monto}}</td>
+                        <td *ngIf="egreso.periodo==='0'">Quincena I</td>
+                        <td *ngIf="egreso.periodo==='1'">Quincena II</td>
+                        <td></td>
                         <td>
                             <button class="btn btn-primary" (click)="handleEditClick(egreso)">Edit</button>
                             <button class="btn btn-danger" (click)="handleDeleteClick(egreso.id, index)">Delete</button>

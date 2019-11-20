@@ -4,4 +4,5 @@ export interface IngresoViewModel {
     categoriaIngreso:string;
     descripcion:String;
     monto: string;
+    periodo:string;
 }
