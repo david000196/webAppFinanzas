@@ -31,6 +31,16 @@ export class IngresoService {
   }
 
   getIngresosAnio(): Observable<firebase.firestore.QuerySnapshot> {
-    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.where('categoriaIngreso','==','Ventas')).get();
+    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref
+      .where('uid','==',JSON.parse(localStorage.getItem('user')).uid)      
+      ).get();
+  }
+  getIngresosXAnio(): Observable<firebase.firestore.QuerySnapshot> {
+    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref
+      .where('uid','==',JSON.parse(localStorage.getItem('user')).uid)
+      .where('categoriaIngreso','==','Paycheck')
+      
+      )
+      .get();
   }
 }
