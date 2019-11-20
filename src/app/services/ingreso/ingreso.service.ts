@@ -31,6 +31,6 @@ export class IngresoService {
   }
 
   getIngresosAnio(): Observable<firebase.firestore.QuerySnapshot> {
-    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.orderBy('fecha', 'desc')).get();
+    return this.db.collection<Ingreso>(this.ingresoCollectionName, ref => ref.where('categoriaIngreso','==','Ventas')).get();
   }
 }
