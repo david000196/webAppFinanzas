@@ -26,8 +26,11 @@ export class DashboardComponent implements OnInit {
   public eGasQI: number;
   public eGasQII: number;
   public eGasQT: number;
-  public aux: number;
-  
+  public auxIng: number;
+  public auxIngs: string;
+  public auxGas: number;
+  public auxGass: string;
+
   userDetails: any;
   ingresos:Ingreso[]=[]
   constructor(
@@ -84,13 +87,14 @@ export class DashboardComponent implements OnInit {
         console.log(data);
         if(data.fecha.indexOf(fecha) > -1)
         {
-          this.aux = data.monto;
-          this.rIngQT=this.rIngQT+this.aux;
+          this.auxIngs = data.monto;
+          this.auxIng = Number(this.auxIngs);
+          this.rIngQT=this.rIngQT+this.auxIng;
           if(data.periodo=="0"){
-            this.rIngQI=this.rIngQI+data.monto;
+            this.rIngQI=this.rIngQI+this.auxIng;
           }
           else if(data.periodo=="1"){
-            this.rIngQII=this.rIngQII+data.monto;
+            this.rIngQII=this.rIngQII+this.auxIng;
           }
           const id = value.id;
           const ingreso: IngresoViewModel = {
@@ -115,12 +119,13 @@ export class DashboardComponent implements OnInit {
         console.log(data);
         if(data.fecha.indexOf(fecha) > -1)
         {
-          this.rGasQT=this.rGasQT+data.monto;
+          this.auxGass = data.monto;
+          this.auxGas = Number(this.auxGass);
           if(data.periodo=="0"){
-            this.rGasQI=this.rGasQI+data.monto;
+            this.rGasQI=this.rGasQI+this.auxGas;
           }
           else if(data.periodo=="1"){
-            this.rGasQII=this.rGasQII+data.monto;
+            this.rGasQII=this.rGasQII+this.auxGas;
           }
           const id = value.id;
           const ingreso: IngresoViewModel = {
