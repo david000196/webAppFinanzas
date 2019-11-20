@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriaEgresoViewModel } from 'src/app/models/categoriaEgreso/categoria-egreso-view-model';
 import { CategoriaEgreso } from 'src/app/models/categoriaEgreso/categoria-egreso';
 import { CategoriaEgresoService } from 'src/app/services/categoriaEgreso/categoria-egreso.service';
+import { AuthenticationService } from '../../../service/authentication.service';
 
 @Component({
   selector: 'app-registro-categoria-egreso',
@@ -21,7 +22,8 @@ export class RegistroCategoriaEgresoComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private categoriaEgresoService: CategoriaEgresoService) { }
+    private categoriaEgresoService: CategoriaEgresoService,
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.categoriaEgresoForm = this.formBuilder.group({
@@ -44,11 +46,13 @@ export class RegistroCategoriaEgresoComponent implements OnInit {
 
     if (this.createMode) {
       let categoriaEgreso: CategoriaEgreso = this.categoriaEgresoForm.value;
+      categoriaEgreso.uid=this.authService.isUserLoggedIn().uid;
       this.categoriaEgresoService.saveCategoriaEgreso(categoriaEgreso)
         .then(response => this.handleSuccessfulSaveCategoriaEgreso(response, this.categoriaEgreso))
         .catch(err => console.error(err));
     } else {
       let categoriaEgreso: CategoriaEgresoViewModel = this.categoriaEgresoForm.value;
+      categoriaEgreso.uid=this.authService.isUserLoggedIn().uid;
       categoriaEgreso.id = this.categoriaEgreso.id;
       this.categoriaEgresoService.editCategoriaEgreso(categoriaEgreso)
         .then(() => this.handleSuccessfulEditCategoriaEgreso(categoriaEgreso))
