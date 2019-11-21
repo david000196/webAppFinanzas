@@ -53,8 +53,8 @@ export class DashboardComponent implements OnInit {
     this.rGasQI = 0;
     this.rGasQII = 0;
     this.rGasQT = 0;
-    return this.getIngresosXyear();
-    return this.getEgresosXyear();
+    this.getIngresosXyear();
+    this.getEgresosXyear();
   }
   public byMonth(){
     this.rIngQI = 0;
@@ -63,20 +63,20 @@ export class DashboardComponent implements OnInit {
     this.rGasQI = 0;
     this.rGasQII = 0;
     this.rGasQT = 0;
-    return this.getIngresosXmonth();
-    return this.getEgresosXmonth();
+    this.getIngresosXmonth();
+     this.getEgresosXmonth();
   }
   public getIngresosXyear(){
-    return this.getIngresos(this.yearValue);
+     this.getIngresos(this.yearValue);
   }
   public getIngresosXmonth(){
-    return this.getIngresos(this.monthValue);
+     this.getIngresos(this.monthValue);
   }
   public getEgresosXyear(){
-    return this.getIngresos(this.yearValue);
+     this.getEgresos(this.yearValue);
   }
   public getEgresosXmonth(){
-    return this.getIngresos(this.monthValue);
+     this.getEgresos(this.monthValue);
   }
   public getIngresos(fecha: string){
     
@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
       this.ingresos = [];      
       response.docs.forEach(value => {
         const data = value.data();
-        console.log(data);
+        //console.log(data);
         if(data.fecha.indexOf(fecha) > -1)
         {
           this.auxIngs = data.monto;
@@ -116,11 +116,13 @@ export class DashboardComponent implements OnInit {
       this.ingresos = [];      
       response.docs.forEach(value => {
         const data = value.data();
-        console.log(data);
+        
         if(data.fecha.indexOf(fecha) > -1)
         {
+          console.log(data);
           this.auxGass = data.monto;
           this.auxGas = Number(this.auxGass);
+          this.rGasQT=this.rGasQT+this.auxGas;
           if(data.periodo=="0"){
             this.rGasQI=this.rGasQI+this.auxGas;
           }
