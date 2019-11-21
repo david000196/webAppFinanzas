@@ -48,7 +48,7 @@ export class LoginComponent {
     this.userDetails = this.authService.isUserLoggedIn();
     if (this.userDetails != null) {
       localStorage.setItem("userId", this.userDetails.uid);
-      this.router.navigate(['home']);
+      this.router.navigate(['home/dashboard']);
     }
   }
 
